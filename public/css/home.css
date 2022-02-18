@@ -1,0 +1,78 @@
+.logo {
+    height: 40px;
+}
+.logo-naslovna {
+    display: block;
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    top: 50%;
+    margin-top: -110px;
+    margin-left: -200px;
+    bottom: 80px;
+}
+.scroll-down {
+    display: block;
+    position: absolute;
+    width: 120px;
+    left: 50%;
+    margin-left: -60px;
+    bottom: 20px;
+}
+.cover {
+    background-color: rgb(229, 2, 0);
+    background: url("../img/bg.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+@media (max-width: 480px) {
+    #cov {
+        background-size: contain !important;
+    }
+}
+
+.block {
+    width: 100%;
+    height: 100vh;
+}
+
+.btn-signup {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.3em 0.8em 0.9em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 16px;
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+    bottom: 100px;
+}
+
+.btn-signup svg {
+    margin-right: 3px;
+    transform: rotate(30deg);
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btn-signup span {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btn-signup:hover svg {
+    transform: translateX(5px) rotate(90deg);
+}
+
+.btn-signup:hover span {
+    transform: translateX(7px);
+}
