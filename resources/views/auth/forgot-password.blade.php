@@ -1,11 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img width="250" src="{{ url('img/logoRed.png') }}" />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+            {{ __('Zaboravili ste lozinku? Nema problema! Ukucajte svoju email adresu i poslati ćemo vam link pomoću kojeg možete promjeniti lozinku.') }}
         </div>
 
         @if (session('status'))
@@ -26,7 +26,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
+                    {{ __('Pošalji mi link za promjenu lozinke') }}
                 </x-jet-button>
             </div>
         </form>
