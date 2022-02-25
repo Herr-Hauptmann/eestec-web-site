@@ -1,16 +1,16 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img width="250" src="{{ url('img/logoRed.png') }}" />
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __('Čestitamo, uspješno ste kreirali račun! Prije nego što nastavimo, molimo vas da kliknete na link koji smo vam poslali putem emaila. Ukoliko niste dobili email, rado ćemo vam poslati novi.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                {{ __('Novi link za potvrdu kreiranja računa poslali smo na vašu email adresu.') }}
             </div>
         @endif
 
@@ -20,7 +20,7 @@
 
                 <div>
                     <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                        {{ __('Ponovo pošalji email') }}
                     </x-jet-button>
                 </div>
             </form>
