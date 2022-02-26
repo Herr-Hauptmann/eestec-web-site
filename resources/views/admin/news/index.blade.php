@@ -43,8 +43,8 @@
                                 <tr>
                                     <td class="align-middle">{{ $loop->iteration + ($news->currentPage() - 1) * 25 }}</td>
                                     <td class="align-middle">{{$post->title}}</td>
-                                    <td class="align-middle">Tarik Horozovic</td>
-                                    <td class="align-middle">{{$post->created_at}}</td>
+                                    <td class="align-middle">{{$post->user_name}}</td>
+                                    <td class="align-middle">{{$post->created_at->toDateString()}}</td>
                                     <td class="d-flex justify-content-end">
                                         <button type="button" class="btn btn-outline-success">Uredi</button>
                                         <a class="btn btn-outline-danger ml-2">Briši</a>
@@ -53,7 +53,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $news->links() }}
+                        <div class="row">
+                            <div class="">
+                              {{ $news->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

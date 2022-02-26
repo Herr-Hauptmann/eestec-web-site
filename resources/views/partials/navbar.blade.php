@@ -27,7 +27,7 @@
             @if (Route::has('login'))
             <li class="nav-item">
                 @auth
-                    <a href="{{ url('/admin/dashboard') }}" class="nav-link active">Admin</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link active">Admin</a>
                 @else
                     <a href="{{ route('login') }}" class="nav-link active">Admin</a>
                 @endauth

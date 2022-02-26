@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -10,13 +11,19 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::orderBy('created_at', 'desc')->paginate(25);
+        foreach ($news as $article)
+            $article['user_name'] = User::where('id',$article->user_id)->firstOrFail()->name;
         /*
         TO DO
-        - Na svaku vijest upisati ime autora
-        - Dodati prikaz paginacije na indexu
+        - Dodati text editor
+        - Implementirati serach
+        - Uraditi edit
+        - Uraditi delete
+        - Uraditi show
+        - Dizajnirati prikaz na welcome page-u
         - Dodati preview izgleda naslova
         - Dodati preview izgleda clanka
-        - Dodati text editor
+        - Migrirati stare vijesti
         */
         return view('admin.news.index', compact('news'));
     }
