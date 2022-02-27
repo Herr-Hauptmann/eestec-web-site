@@ -36,20 +36,15 @@
                                     <button type="button" id="show-heading" class="btn btn-warning mb-1 col-12 col-md-5 mx-md-1">Pogledaj naslov</button>
                                     <button type="button" id='show-article' class="btn btn-warning mb-1 col-12 col-md-5 mx-md-1">Pogledaj vijest </button>
                                 </div>
-                                <button type="button" href="{{route('news.index')}}" class="btn btn-danger mb-1 col-md-2 col-12">Odustani</button>
+                                <a href="{{route('news.index')}}" class="btn btn-danger mb-1 col-md-2 col-12">Odustani</a>
                             </div>
                           </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
-        <script>
-            ClassicEditor
-            .create( document.querySelector( '#content' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-        </script>
-        <script src="{{ url('/js/novosti.js')}}"></script>
+    </div>
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    @include('admin.texteditor')
+    <script src="{{ url('/js/novosti.js')}}"></script>
 </x-app-layout>

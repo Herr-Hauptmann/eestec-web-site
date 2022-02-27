@@ -19,4 +19,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', functio
     return view('admin/dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->post('/admin/image_upload', [ImageController::Class, 'storeNewsImage'])->name('news.image.upload');
+
 Route::middleware(['auth:sanctum', 'verified'])->resource('admin/news', NewsController::Class);
