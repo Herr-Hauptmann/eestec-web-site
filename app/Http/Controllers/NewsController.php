@@ -10,21 +10,23 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::orderBy('created_at', 'desc')->paginate(25);
-        foreach ($news as $article)
-            $article['user_name'] = User::where('id',$article->user_id)->firstOrFail()->name;
-        /*
-        TO DO
-        - Implementirati serach
-        - Uraditi edit
-        - Uraditi show
-        - Dizajnirati prikaz na welcome page-u
-        - Dodati preview izgleda naslova
-        - Dodati preview izgleda clanka
-        - Migrirati stare vijesti
-        */
+        //Pretraga
+        $keyword = $request->get('search');
+        if (!empty($keyword)) {
+            $news = News::
+                    where('title', 'LIKE', "%$keyword%")
+                    ->orderBy('created_at', 'desc')
+                    -> paginate();
+        }
+        //Bez pretrage - ispisi sve
+        else 
+        {
+            $news = News::orderBy('created_at', 'desc')->paginate(25);
+        }
+
+        
         return view('admin.news.index', compact('news'));
     }
 
