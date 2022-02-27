@@ -48,17 +48,19 @@ class NewsController extends Controller
         }
         $validiranZahtjev['user_id']=auth()->user()->id;
 
+
         //Obrada slike
+        $id = News::latest()->first()->id+1;
         $ekstenzija = $request->file('img_path')->getClientOriginalExtension();
         //Kreiranje naziva slike
         $naziv = 'vijest'.'_'.time().'.'.$ekstenzija;
         // uplad image
-        $path = $request->file('img_path')->storeAs('public/img/vijesti/', $naziv);     
+        $path = $request->file('img_path')->storeAs('public/img/vijesti/'.$id.'/', $naziv);     
         //U bazi pamtimo samo ime
         $validiranZahtjev['img_path'] = $naziv;
 
         //Kompresuj sliku
-        $filepath = public_path('storage/img/vijesti/'.$naziv);
+        $filepath = public_path('storage/img/vijesti/'.$id.'/'.$naziv);
         $mime = mime_content_type($filepath);
         $output = new \CURLFile($filepath, $mime, $naziv);
         $data = ["files" => $output];
