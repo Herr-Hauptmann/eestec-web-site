@@ -20,5 +20,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/admin/dashboard', functio
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/admin/image_upload', [ImageController::Class, 'storeNewsImage'])->name('news.image.upload');
+Route::middleware(['auth:sanctum', 'verified'])->get('/admin/image_delete', [ImageController::Class, 'deleteNewsImage'])->name('news.image.delete');
 
 Route::middleware(['auth:sanctum', 'verified'])->resource('admin/news', NewsController::Class);

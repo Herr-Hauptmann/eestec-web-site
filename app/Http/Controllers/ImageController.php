@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
 use App\Models\News;
 
 use Illuminate\Http\Request;
@@ -53,5 +54,12 @@ class ImageController extends Controller
         return response()->json([
             'url'=>$link
         ]);
+    }
+
+    public function deleteNewsImage(Request $request){
+        $id = News::latest()->first()->id+1;
+        $link = ('public/img/vijesti/'.$id);
+        Storage::deleteDirectory($link);
+        return redirect(route('news.index'));
     }
 }

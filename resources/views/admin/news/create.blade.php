@@ -36,7 +36,7 @@
                                     <button type="button" id="show-heading" class="btn btn-warning mb-1 col-12 col-md-5 mx-md-1">Pogledaj naslov</button>
                                     <button type="button" id='show-article' class="btn btn-warning mb-1 col-12 col-md-5 mx-md-1">Pogledaj vijest </button>
                                 </div>
-                                <a href="{{route('news.index')}}" class="btn btn-danger mb-1 col-md-2 col-12">Odustani</a>
+                                <a href="{{route('news.image.delete')}}" class="btn btn-danger mb-1 col-md-2 col-12">Odustani</a>
                             </div>
                           </form>
                     </div>
