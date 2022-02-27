@@ -121,14 +121,11 @@ class NewsController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(News $news)
     {
-        //
+        $id = Product::findOrFail($news->id);
+        $link = ('public/img/vijesti/'.$id);
+        Storage::deleteDirectory($link);
+        return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste izbrisali vijest');
     }
 }
