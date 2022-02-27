@@ -12,10 +12,10 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
-          <form id="formaBrisanje" action="" method="post">
-            @method('delete')
-            @csrf
-            <button type="submit" class="btn btn-danger">Izbriši</button>
+          <form id="formaBrisanje" action="" method="POST">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger">Izbriši</button>
           </form>
         </div>
       </div>

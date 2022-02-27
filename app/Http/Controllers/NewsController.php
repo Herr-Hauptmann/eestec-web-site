@@ -110,11 +110,11 @@ class NewsController extends Controller
 
     public function destroy(News $news)
     {
-        $id = News::findOrFail($news->id);
+        $id = $news->id;
         $title = $news->title;
         $link = ('public/img/vijesti/'.$id);
         Storage::deleteDirectory($link);
-        News::destroy($id);
+        $news->delete();
         return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste izbrisali vijest '.$title.'!');
     }
 }
