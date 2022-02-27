@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -15,10 +17,8 @@ class NewsController extends Controller
             $article['user_name'] = User::where('id',$article->user_id)->firstOrFail()->name;
         /*
         TO DO
-        - Dodati text editor
         - Implementirati serach
         - Uraditi edit
-        - Uraditi delete
         - Uraditi show
         - Dizajnirati prikaz na welcome page-u
         - Dodati preview izgleda naslova
@@ -98,24 +98,11 @@ class NewsController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
     public function edit(News $news)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, News $news)
     {
         //
@@ -123,9 +110,11 @@ class NewsController extends Controller
 
     public function destroy(News $news)
     {
-        $id = Product::findOrFail($news->id);
+        $id = News::findOrFail($news->id);
+        $title = $news->title;
         $link = ('public/img/vijesti/'.$id);
         Storage::deleteDirectory($link);
-        return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste izbrisali vijest');
+        News::destroy($id);
+        return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste izbrisali vijest '.$title.'!');
     }
 }

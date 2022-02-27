@@ -47,7 +47,7 @@
                                     <td class="align-middle">{{$post->created_at->toDateString()}}</td>
                                     <td class="d-flex justify-content-end">
                                         <button type="button" class="btn btn-outline-success">Uredi</button>
-                                        <a class="btn btn-outline-danger ml-2">Briši</a>
+                                        <a id="deleteTrigger" data-bs-toggle="modal" data-bs-target="#deletePost" data-route="{{ route('news.destroy', $post->id) }}" data-naziv="{{$post->title}}"  class="btn btn-outline-danger ml-2">Briši</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -63,9 +63,20 @@
             </div>
         </div>
     </div>
+    @include('admin.news.delete')
     @if(session()->has('jsAlert'))
         <script>
             alert("{{ session()->get('jsAlert') }}");
         </script>
-    @endif 
+    @endif
+    <script>
+        let button = document.getElementById('deleteTrigger');
+        button.addEventListener('click', ()=>{
+            let modal = document.getElementById('deletePost');
+            let naziv = button.dataset.naziv;
+            let ruta = button.dataset.route;
+            document.getElementById('tijelo').innerHTML = "Da li ste sigurni da želite izbrisati vijest " + naziv + "?!";
+            document.getElementById('formaBrisanje').action=ruta;
+        });
+    </script>
 </x-app-layout>
