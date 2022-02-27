@@ -21,7 +21,7 @@
 
         _initRequest() {
             const xhr = this.xhr = new XMLHttpRequest();
-            xhr.open('POST', '{{ route('news.image.upload') }}', true);
+            xhr.open('POST', '{{ route('news.image.upload', $id) }}', true);
             xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}')
             xhr.responseType = 'json';
         }

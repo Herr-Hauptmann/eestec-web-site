@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\News;
-
+use DB;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function storeNewsImage(Request $request){
-        $id = News::latest()->first()->id+1;
+    public function storeNewsImage(Request $request, $id=null){
+        $validiranZahtjev = $request->validate([
+            'upload' => 'required|image|max:5128'
+        ]);
+
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'news'");
+        $id = $statement[0]->Auto_increment;
         
         //Obrada slike
         $ekstenzija = $request->file('upload')->getClientOriginalExtension();
@@ -57,7 +62,8 @@ class ImageController extends Controller
     }
 
     public function deleteNewsImage(Request $request){
-        $id = News::latest()->first()->id+1;
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'news'");
+        $id = $statement[0]->Auto_increment;
         $link = ('public/img/vijesti/'.$id);
         Storage::deleteDirectory($link);
         return redirect(route('news.index'));
