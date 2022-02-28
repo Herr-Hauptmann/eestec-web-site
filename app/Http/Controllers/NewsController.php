@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\User;
-use DB;
+
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use DB;
 
 class NewsController extends Controller
 {
@@ -99,9 +102,23 @@ class NewsController extends Controller
         return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste kreirali vijest!');
     }
 
-    public function show(News $news)
+    public function show($id)
     {
-        //
+        $post = News::findOrFail($id);
+
+		SEOMeta::setTitle($post->title);
+		SEOMeta::setDescription($post->description);
+		SEOMeta::addKeyword(['eestec', 'lc sarajevo', 'sarajevo', 'novosti', 'eestec lc sarajevo', 'eestec lk sarajevo', 'lokalni komitet sarajevo']);
+
+		OpenGraph::setDescription($post->description);
+		OpenGraph::setTitle($post->title);
+		OpenGraph::setUrl('http://www.eestec-sa.ba/posts/'.$post->id);
+
+		OpenGraph::addImage('http://www.eestec-sa.ba/static/'.$post->img_path);
+		OpenGraph::addImage(['url' => 'http://www.eestec-sa.ba/static/'.$post->img_path, 'size' => 300]);
+		OpenGraph::addImage('http://www.eestec-sa.ba/static/'.$post->img_path, ['height' => 300, 'width' => 300]);
+
+		return view('admin.news.show', compact('post'));
     }
 
     public function edit($id)

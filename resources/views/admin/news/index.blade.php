@@ -38,7 +38,8 @@
                                     <td class="align-middle">{{$post->user->name}}</td>
                                     <td class="align-middle">{{$post->created_at->toDateString()}}</td>
                                     <td class="d-flex justify-content-end">
-                                        <a href="{{route('news.edit', $post->id)}}" class="btn btn-outline-success">Uredi</button>
+                                        <a href="{{route('news.show', $post->id)}}" class="btn btn-outline-dark">Pogledaj</a>
+                                        <a href="{{route('news.edit', $post->id)}}" class="btn btn-outline-success ml-2">Uredi</a>
                                         <a id="deleteTrigger" data-bs-toggle="modal" data-bs-target="#deletePost" data-route="{{ route('news.destroy', $post->id) }}" data-naziv="{{$post->title}}"  class="btn btn-outline-danger ml-2">Briši</a>
                                     </td>
                                 </tr>
