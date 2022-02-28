@@ -18,7 +18,8 @@
         @include('partials.social')
         <div class="col-md-8">
             <h1 class="podnaslov text-center">{{$post->title}}</h1>
-            <div class="row mt-3 mb-5">
+
+            <div class="row mt-3 mb-2">
                 <div class="col-6 ">
                     {{ date('d.m.Y', $post->timestamp) }}
                 </div>
@@ -26,7 +27,12 @@
                     {{$post->user->name}}
                 </div>
             </div>
-            <span class="content mt-3">
+            <div class="row mt-3 mb-3">
+                <h6 class="opis">
+                    {{$post->description}}
+                </h6>
+            </div>
+            <span class="content mt-5">
                 {!! $post->content !!}
             </span>
         </div>
