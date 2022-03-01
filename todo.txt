@@ -1,8 +1,6 @@
 TO DO
-- Dizajnirati prikaz na welcome page-u
 - Dodati preview izgleda naslova
 - Dodati preview izgleda clanka
 - Migrirati stare vijesti
 - Napraviti da frontend validacija lijepo izgleda tokom dodavanja vijesti
-
 DONE

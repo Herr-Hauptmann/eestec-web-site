@@ -12,5 +12,5 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('admin/news', NewsCont
 Route::get('admin/news/{id}', [NewsController::Class, 'show'])->name('news.show');
 
 /*Rute vezane za welcome page*/
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('landing');
 Route::get('/news', [NewsController::class, 'showAll'])->name('news');
