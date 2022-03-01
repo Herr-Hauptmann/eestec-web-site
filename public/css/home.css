@@ -1,7 +1,5 @@
 
 /* Prvi dio se bavi osnovnim elementima stranice */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
-
 
 .naslov{
     text-align: center;
@@ -13,9 +11,6 @@
 
 /* Ovaj dio se bavi coverom stranice */
 
-.logo {
-    height: 40px;
-}
 .logo-naslovna {
     display: block;
     position: absolute;

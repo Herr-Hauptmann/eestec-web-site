@@ -16,14 +16,14 @@
         </div>
     </div>
     <div class="container">
-        <div class="row mb-2">
+        <div class="row mb-3">
             @foreach ($news as $post)
                 @if ($loop->first)
                     @continue
                 @endif
-            <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col-8 p-4 d-flex flex-column position-static">
+            <div class="col-md-6 my-2">
+                <div class="row g-2 border rounded overflow-hidden flex-md-row shadow-sm h-100 position-relative">
+                    <div class="col-8 p-4 d-flex flex-column position-static ">
                         {{-- Ovo ispod koristiti ako kad dodamo kategorije vijesti --}}
                         {{-- <strong class="d-inline-block mb-2 text-primary">World</strong> --}}
                         <h3 class="mb-0">{{$post->title}}</h3>
@@ -42,7 +42,7 @@
     <div class="container mb-4">
         <div class="row justify-content-end">
             <div class="col-2">
-                <a class="btn btn-outline-dark d-block" href="#">
+                <a class="btn btn-outline-dark d-block" href="{{route('news')}}">
                     Pogledaj sve novosti
                 </a>
             </div>

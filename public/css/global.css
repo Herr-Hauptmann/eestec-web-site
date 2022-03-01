@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+
+.footer{
+    background-color: black;
+    color:white;
+}
+.logo {
+    height: 40px;
+}
+
+.naslov-dijela{
+    text-align: center;
+    font: Bold 48px/60px Poppins;
+    letter-spacing: 0;
+    color: #475677;
+    opacity: 1;
+}

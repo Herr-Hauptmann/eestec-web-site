@@ -8,6 +8,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use DB;
@@ -30,7 +31,6 @@ class NewsController extends Controller
             $news = News::orderBy('created_at', 'desc')->paginate(25);
         }
 
-        
         return view('admin.news.index', compact('news'));
     }
 
@@ -198,5 +198,23 @@ class NewsController extends Controller
         Storage::deleteDirectory($link);
         $news->delete();
         return redirect(route('news.index'))->with('jsAlert', 'Uspjesno ste izbrisali vijest '.$title.'!');
+    }
+
+    public function showAll()
+    {
+        SEOMeta::setTitle("Novosti");
+        SEOMeta::setDescription("EESTEC LC Sarajevo - najnovije novosti vezane za Lokalni komitet Sarajevo, EESTEC International, naše projekte i naše partnere.");
+        SEOMeta::addKeyword(['eestec', 'lc sarajevo', 'sarajevo', 'novosti', 'eestec lc sarajevo', 'eestec lk sarajevo', 'lokalni komitet sarajevo']);
+
+        OpenGraph::setDescription("EESTEC LC Sarajevo - najnovije novosti vezano za Lokalni komitet Sarajevo, EESTEC International, naše projekte i naše partnere.");
+        OpenGraph::setTitle("Novosti");
+        OpenGraph::setUrl('http://www.eestec-sa.ba/news');
+
+        OpenGraph::addImage('http://www.eestec-sa.ba/img/cover.png');
+        OpenGraph::addImage(['url' => 'http://www.eestec-sa.ba/img/cover.png', 'size' => 300]);
+		OpenGraph::addImage('http://www.eestec-sa.ba/img/cover.png', ['height' => 300, 'width' => 300]);
+
+        $news = News::orderBy('created_at', 'desc')->paginate(25);
+        return view('news', compact('news'));
     }
 }
