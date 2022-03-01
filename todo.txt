@@ -1,5 +1,4 @@
 TO DO
-- Uraditi show
 - Dizajnirati prikaz na welcome page-u
 - Dodati preview izgleda naslova
 - Dodati preview izgleda clanka

@@ -1,4 +1,4 @@
-<div class="col-md-4 order-last order-md-first align-middle">
+<div class="col-md-3 order-last order-md-first align-middle">
     <div class="row pr-2 justify-content-center">
         <h3>Follow us on: </h3>
     <div class="btn__container">
@@ -23,7 +23,7 @@
             </i>
             <span>instagram</span>
         </a>
-        
+        <div class="col-md-1"></div>
     </div>
     </div>
 </div>

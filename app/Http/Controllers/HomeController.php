@@ -9,6 +9,7 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 class HomeController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $news = News::orderBy('created_at', 'desc')->take(5)->get();
+        return view('welcome', compact('news'));
     }
 }

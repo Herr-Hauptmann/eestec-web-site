@@ -1,3 +1,18 @@
+
+/* Prvi dio se bavi osnovnim elementima stranice */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+
+
+.naslov{
+    text-align: center;
+    font: Bold 48px/60px Poppins;
+    letter-spacing: 0;
+    color: #475677;
+    opacity: 1;
+}
+
+/* Ovaj dio se bavi coverom stranice */
+
 .logo {
     height: 40px;
 }
@@ -75,4 +90,13 @@
 
 .btn-signup:hover span {
     transform: translateX(7px);
+}
+
+
+/* Ovaj dio se bavi novostima */
+
+
+.footer{
+    background-color: black;
+    color:white;
 }
