@@ -46,14 +46,9 @@ class FacultySeeder extends Seeder
 
         if(DB::table('faculties')->count() == 0){
             foreach($fakulteti as $fakultet){
-                // DB::table('faculty')->insert([
-                //     'name'=>$fakultet
-                // ]);
-                
                 Faculty::create([
                     'name'=>$fakultet
                 ]);
-
             }
         }
         else
