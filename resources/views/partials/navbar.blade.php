@@ -7,10 +7,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Početna</a>
+            <a class="nav-link @if(Route::currentRouteName()=='landing')active @endif" aria-current="page" href="{{ url('/') }}">Početna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Novosti</a>
+            <a class="nav-link @if(Route::currentRouteName()=='news')active @endif" href="{{route('news')}}">Novosti</a>
           </li>     
           <li class="nav-item">
             <a class="nav-link disabled" href="#">O nama</a>
@@ -19,7 +19,7 @@
             <a class="nav-link disabled" href="#">Partneri</a>
           </li>     
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Događaji</a>
+            <a class="nav-link disabled" href="#">Projekti</a>
           </li>     
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Kontakt</a>
@@ -27,9 +27,9 @@
             @if (Route::has('login'))
             <li class="nav-item">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="nav-link active">Admin</a>
+                    <a href="{{ route('dashboard') }}" class="nav-link active">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="nav-link active">Admin</a>
+                    <a href="{{ route('login') }}" class="nav-link">Admin</a>
                 @endauth
             </li>
             @endif   
